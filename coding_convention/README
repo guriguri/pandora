@@ -1,0 +1,14 @@
+for Eclipse
+
+1. pandora-codetemplates.xml
+- Preferences > Java >  Code Style > Code Templates
+
+2. pandora-formatter.xml
+- Preferences > Java >  Code Style > Formatter
+
+3. pandora-templates.xml
+- Preferences > Java >  Editor > Templates
+
+4. pandora-checkstyle.xml (optional)
+- Preferences > Checkstyle > New > Import
+- Plugin Url: http://eclipse-cs.sf.net/update/
