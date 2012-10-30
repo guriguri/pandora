@@ -15,37 +15,34 @@
  */
 package pandora.vertx;
 
+import org.apache.commons.lang.StringUtils;
 import org.junit.Test;
 import org.vertx.java.core.buffer.Buffer;
 
 public class VertxTcpClientTest {
-	private static final int MAX_SEND_COUNT = 1000;
+	private static final int PACKET_SIZE = 100;
+	private static final int MAX_SEND_COUNT = 100000;
 	private static final long THREAD_SLEEP_MSEC = 1000L;
 
+	private static final float MILI_SEC = 1000.0F;
+	private static final float NANO_SEC = 1000000000.0F;
+
 	private class VertxClientEventHandler extends VertxEventHandler {
-		private boolean isClose = false;
-
-		public boolean isClose() {
-			return isClose;
-		}
-
-		public void setClose(boolean isClose) {
-			this.isClose = isClose;
-		}
-
 		public void connectHandler() {
+			setConnectNsec(System.nanoTime());
+
 			for (int i = 0; i < MAX_SEND_COUNT; i++) {
-				String packet = String.format("%0100d", i);
+				String packet = StringUtils.leftPad(String.valueOf(i),
+						PACKET_SIZE, "0");
 				send(new Buffer(packet));
 			}
 
 			close();
-			setClose(true);
 		}
 	}
 
 	@Test
-	public final void test() {
+	public final void perf() {
 		VertxTcpClient client = new VertxTcpClient();
 		VertxClientEventHandler handler = new VertxClientEventHandler();
 
@@ -63,5 +60,11 @@ public class VertxTcpClientTest {
 				e.printStackTrace();
 			}
 		}
+
+		float totElapsedNsec = ((handler.getCloseNsec() - handler
+				.getConnectNsec()) / NANO_SEC);
+		float avgElapsedNsec = totElapsedNsec / MAX_SEND_COUNT * MILI_SEC;
+		System.out.println("elapsedTime, total=" + totElapsedNsec + "sec, avg="
+				+ avgElapsedNsec + "msec");
 	}
 }

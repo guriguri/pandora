@@ -10,6 +10,7 @@
 
 	<modules>
 		<module>vertx</module>
+		<module>avro</module>
 		<module>util</module>
 	</modules>
 

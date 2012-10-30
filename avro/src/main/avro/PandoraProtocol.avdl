@@ -1,0 +1,22 @@
+@namespace("pandora.avro")
+protocol PandoraProtocol {
+	record PandoraRecord {
+		string stringData = null;
+		bytes byteData;
+		int intData;
+		long longData;
+		float floatData;
+		double doubleData;
+		boolean booleanData = true;
+	}
+	
+	enum PandoraEnum {
+		FIRST, SECOND, THIRD
+	}
+	
+	record PandoraList {
+		array<PandoraRecord> recordList;
+		array<string> stringList;
+		PandoraEnum pandoraEnum;
+	}
+}
