@@ -17,7 +17,11 @@ package pandora.vertx;
 
 import org.apache.commons.lang.StringUtils;
 import org.junit.Test;
+import org.vertx.java.core.SimpleHandler;
 import org.vertx.java.core.buffer.Buffer;
+import org.vertx.java.core.net.NetSocket;
+
+import pandora.util.SocketUtil;
 
 public class VertxTcpClientTest {
 	private static final int PACKET_SIZE = 100;
@@ -28,21 +32,26 @@ public class VertxTcpClientTest {
 	private static final float NANO_SEC = 1000000000.0F;
 
 	private class VertxClientEventHandler extends VertxEventHandler {
-		public void connectHandler() {
+		public void connectHandler(final NetSocket sock) {
 			setConnectNsec(System.nanoTime());
 
 			for (int i = 0; i < MAX_SEND_COUNT; i++) {
 				String packet = StringUtils.leftPad(String.valueOf(i),
 						PACKET_SIZE, "0");
-				send(new Buffer(packet));
+				send(sock, new Buffer(packet));
 			}
 
-			close();
+			sock.close();
+		}
+
+		public void handle(final NetSocket sock) {
+			super.handle(sock);
+			connectHandler(sock);
 		}
 	}
 
-	@Test
-	public final void perf() {
+	// @Test
+	public final void asyncPerf() {
 		VertxTcpClient client = new VertxTcpClient();
 		VertxClientEventHandler handler = new VertxClientEventHandler();
 
@@ -52,19 +61,42 @@ public class VertxTcpClientTest {
 
 		client.start();
 
-		while (!handler.isClose()) {
-			try {
-				Thread.sleep(THREAD_SLEEP_MSEC);
-			}
-			catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+		try {
+			Thread.sleep(THREAD_SLEEP_MSEC);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
 		}
 
 		float totElapsedNsec = ((handler.getCloseNsec() - handler
 				.getConnectNsec()) / NANO_SEC);
 		float avgElapsedNsec = totElapsedNsec / MAX_SEND_COUNT * MILI_SEC;
-		System.out.println("elapsedTime, total=" + totElapsedNsec + "sec, avg="
-				+ avgElapsedNsec + "msec");
+		System.out.println("async, elapsedTime, total=" + totElapsedNsec
+				+ "sec, avg=" + avgElapsedNsec + "msec");
+	}
+
+	@Test
+	public final void syncPerf() {
+		int errorCnt = 0;
+		long start = System.nanoTime();
+		String packet = StringUtils.leftPad(String.valueOf(99999), PACKET_SIZE,
+				"0");
+		for (int i = 0; i < MAX_SEND_COUNT; i++) {
+			try {
+				SocketUtil.getSocketToString(VertxTcpServerTest.DOMAIN,
+						VertxTcpServerTest.PORT, packet, 100);
+			} catch (Exception e) {
+				e.printStackTrace();
+				errorCnt++;
+			}
+		}
+
+		float totElapsedNsec = (System.nanoTime() - start);
+		float avgElapsedNsec = totElapsedNsec / MAX_SEND_COUNT;
+		System.out.println("sync, elapsedTime, total="
+				+ (totElapsedNsec / NANO_SEC) + "sec, avg="
+				+ (avgElapsedNsec / MILI_SEC) + "msec, tps="
+				+ (MAX_SEND_COUNT / (totElapsedNsec / NANO_SEC))
+				+ ", errorCnt=" + errorCnt + ", errorRate="
+				+ (errorCnt * 100.0F / MAX_SEND_COUNT));
 	}
 }

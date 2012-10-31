@@ -17,6 +17,7 @@ package pandora.vertx;
 
 import java.nio.channels.ClosedChannelException;
 
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.vertx.java.core.Handler;
@@ -25,32 +26,15 @@ import org.vertx.java.core.buffer.Buffer;
 import org.vertx.java.core.net.NetSocket;
 
 public class VertxEventHandler implements Handler<NetSocket> {
-	private static Logger log = LoggerFactory
+	protected static Logger log = LoggerFactory
 			.getLogger(VertxEventHandler.class);
 
-	private NetSocket sock;
-
-	private int recvCnt = 0;
-	private int failCnt = 0;
-	private int sendCnt = 0;
-	private int closedChannelExceptionCnt = 0;
-
-	private boolean isClose = false;
+	protected int recvCnt = 0;
+	protected int failCnt = 0;
+	protected int sendCnt = 0;
 
 	private long connectNsec = 0L;
 	private long closeNsec = 0L;
-
-	public boolean isClose() {
-		return isClose;
-	}
-
-	public void setClose(boolean isClose) {
-		if (isClose == true) {
-			setCloseNsec(System.nanoTime());
-		}
-
-		this.isClose = isClose;
-	}
 
 	public long getConnectNsec() {
 		return connectNsec;
@@ -68,29 +52,15 @@ public class VertxEventHandler implements Handler<NetSocket> {
 		this.closeNsec = closeNsec;
 	}
 
-	public void close() {
-		sock.drainHandler(new SimpleHandler() {
-			public void handle() {
-				sock.close();
-
-				log.debug("close socket, sock={}", sock.writeHandlerID);
-			}
-		});
-	}
-
-	public void send(Buffer buffer) {
-		if (isClose == true) {
-			log.error("close socket, sock={}", sock.writeHandlerID);
-		}
-		else if (!sock.writeQueueFull()) {
+	public void send(final NetSocket sock, Buffer buffer) {
+		if (!sock.writeQueueFull()) {
 			sock.write(buffer, new SimpleHandler() {
 				public void handle() {
 					log.debug("write socket, sock={}, sendCnt={}",
 							sock.writeHandlerID, ++sendCnt);
 				}
 			});
-		}
-		else {
+		} else {
 			sock.pause();
 			log.debug("pause socket, sock={}", sock.writeHandlerID);
 
@@ -104,14 +74,11 @@ public class VertxEventHandler implements Handler<NetSocket> {
 		}
 	}
 
-	public void connectHandler() {
+	public void connectHandler(final NetSocket sock) {
 		log.debug("connectHandler, sock={}", sock.writeHandlerID);
 	}
 
 	public void handle(final NetSocket sock) {
-		this.isClose = false;
-		this.sock = sock;
-
 		/*
 		 * receive
 		 */
@@ -126,7 +93,6 @@ public class VertxEventHandler implements Handler<NetSocket> {
 		sock.closedHandler(new Handler<Void>() {
 			@Override
 			public void handle(Void arg0) {
-				setClose(true);
 				log.debug("closedHandler, sock={}", sock.writeHandlerID);
 			}
 		});
@@ -144,19 +110,9 @@ public class VertxEventHandler implements Handler<NetSocket> {
 				log.error("exceptionHandler, sock={}, sendCnt={}, failCnt={}",
 						new Object[] { sock.writeHandlerID, sendCnt, ++failCnt,
 								e });
-				if (e instanceof ClosedChannelException) {
-					closedChannelExceptionCnt++;
-
-					if (closedChannelExceptionCnt == 2) {
-						setClose(true);
-					}
-				}
 			}
 		});
 
-		/*
-		 * connect
-		 */
-		connectHandler();
+		connectHandler(sock);
 	}
 }

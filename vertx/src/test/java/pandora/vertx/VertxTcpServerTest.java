@@ -16,10 +16,33 @@
 package pandora.vertx;
 
 import org.junit.Test;
+import org.vertx.java.core.Handler;
+import org.vertx.java.core.buffer.Buffer;
+import org.vertx.java.core.net.NetSocket;
 
 public class VertxTcpServerTest {
 	public static final int PORT = 12340;
 	public static final String DOMAIN = "localhost";
+
+	private class VertxServerEventHandler extends VertxEventHandler {
+		public void handle(final NetSocket sock) {
+			super.handle(sock);
+
+			/*
+			 * receive
+			 */
+			sock.dataHandler(new Handler<Buffer>() {
+				@Override
+				public void handle(Buffer buffer) {
+					log.debug("dataHandler, sock={}, recvCnt={}, data={}",
+							new Object[] { sock.writeHandlerID, ++recvCnt,
+									buffer });
+					send(sock, buffer);
+//					sock.close();
+				}
+			});
+		}
+	}
 
 	@Test
 	public void test() {
@@ -27,7 +50,7 @@ public class VertxTcpServerTest {
 
 		server.setDomain(DOMAIN);
 		server.setPort(PORT);
-		server.setHandler(new VertxEventHandler());
+		server.setHandler(new VertxServerEventHandler());
 
 		new Thread(server).run();
 	}

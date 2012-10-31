@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 
 import pandora.avro.util.AvroUtil;
 import pandora.java.PandoraRecord4Serializable;
-import pandora.util.JavaObjectTransformer;
+import pandora.util.Serializer;
 
 public class AvroUtilTest {
 	private static Logger log = LoggerFactory.getLogger(AvroUtilTest.class);
@@ -56,6 +56,6 @@ public class AvroUtilTest {
 		java.setByteData(ByteBuffer.allocate(10));
 		java.setStringData("org");
 		log.debug("Java Encode, encode.size={}",
-				JavaObjectTransformer.encode(java).length);
+				Serializer.encode(java).length);
 	}
 }
