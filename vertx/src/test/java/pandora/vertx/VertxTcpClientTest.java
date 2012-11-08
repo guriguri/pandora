@@ -17,7 +17,6 @@ package pandora.vertx;
 
 import org.apache.commons.lang.StringUtils;
 import org.junit.Test;
-import org.vertx.java.core.SimpleHandler;
 import org.vertx.java.core.buffer.Buffer;
 import org.vertx.java.core.net.NetSocket;
 

@@ -15,9 +15,6 @@
  */
 package pandora.vertx;
 
-import java.nio.channels.ClosedChannelException;
-
-import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.vertx.java.core.Handler;
