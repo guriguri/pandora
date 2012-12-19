@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+	<bean id="redisUserDao" class="pandora.redis.dao.RedisUserDaoImpl"
+		p:shardedJedisPool-ref="redisPoolFactory" />
+
+	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig"
+		p:maxActive="200" p:maxIdle="50" p:minIdle="50" />
+
+	<!--bean id="redisPoolFactory" class="pandora.redis.dao.RedisPoolFactory" 
+		p:poolConfig-ref="jedisPoolConfig" p:shards="192.168.1.6:6379,192.168.1.7:6379,192.168.1.8:6379" 
+		p:timeout="10000" / -->
+
+	<bean id="redisPoolFactory" class="pandora.redis.dao.RedisPoolFactory"
+		p:poolConfig-ref="jedisPoolConfig" p:shards="${redis.server}"
+		p:timeout="10000" />
+
+</beans>

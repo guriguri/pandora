@@ -13,10 +13,33 @@
 
 	<properties>
 		<java.version>1.7</java.version>
+		<redis.clients.version>2.1.0</redis.clients.version>
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>org.springframework.jdbc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>${redis.clients.version}</version>
+		</dependency>
 	</dependencies>
+
+	<profiles>
+		<profile>
+			<id>test</id>
+			<properties>
+				<redis.server>192.168.1.6:6379,192.168.1.7:6379,192.168.1.8:6379</redis.server>
+			</properties>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+		</profile>
+	</profiles>
 
 	<build>
 		<pluginManagement>
