@@ -10,6 +10,7 @@
 
 	<modules>
 		<module>util</module>
+		<module>common-domain</module>
 		<module>vertx</module>
 		<module>avro</module>
 		<module>redis</module>

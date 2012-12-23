@@ -1,4 +1,4 @@
-package pandora.redis.domain;
+package pandora.domain;
 
 import java.io.Serializable;
 

@@ -1,4 +1,4 @@
-package pandora.redis.domain;
+package pandora.domain;
 
 public class User extends BaseDomain {
 	private static final long serialVersionUID = -2767801332235256211L;
