@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>pandora</groupId>
 		<artifactId>pandora</artifactId>
-		<version>${project.version}</version>
+		<version>parent</version>
 	</parent>
 	<artifactId>pandora-hbase</artifactId>
 

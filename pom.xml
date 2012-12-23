@@ -4,21 +4,23 @@
 
 	<groupId>pandora</groupId>
 	<artifactId>pandora</artifactId>
-	<version>${project.version}</version>
-
+	<version>parent</version>
+  
 	<packaging>pom</packaging>
 
 	<modules>
+		<module>util</module>
 		<module>vertx</module>
 		<module>avro</module>
-		<module>util</module>
+		<module>redis</module>
+		<!--
 		<module>disruptor</module>
 		<module>hbase</module>
 		<module>kafka</module>
 		<module>kryo2</module>
 		<module>mysql</module>
-		<module>redis</module>
 		<module>storm</module>
+		-->
 	</modules>
 
 	<properties>
