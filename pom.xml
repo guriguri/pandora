@@ -13,14 +13,12 @@
 		<module>vertx</module>
 		<module>avro</module>
 		<module>redis</module>
-		<!--
 		<module>disruptor</module>
 		<module>hbase</module>
 		<module>kafka</module>
 		<module>kryo2</module>
 		<module>mysql</module>
 		<module>storm</module>
-		-->
 	</modules>
 
 	<properties>
