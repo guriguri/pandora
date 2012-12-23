@@ -9,7 +9,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import pandora.avro.util.AvroUtil;
-import pandora.java.PandoraRecord4Serializable;
+import pandora.domain.PandoraRecord4Serializable;
+import pandora.domain.avro.PandoraRecord;
 import pandora.util.Serializer;
 
 public class AvroUtilTest {

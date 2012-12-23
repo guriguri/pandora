@@ -3,13 +3,13 @@
  * 
  * DO NOT EDIT DIRECTLY
  */
-package pandora.avro;  
+package pandora.domain.avro;  
 @SuppressWarnings("all")
 public class PandoraList extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"PandoraList\",\"namespace\":\"pandora.avro\",\"fields\":[{\"name\":\"recordList\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"PandoraRecord\",\"fields\":[{\"name\":\"stringData\",\"type\":\"string\",\"default\":null},{\"name\":\"byteData\",\"type\":\"bytes\"},{\"name\":\"intData\",\"type\":\"int\"},{\"name\":\"longData\",\"type\":\"long\"},{\"name\":\"floatData\",\"type\":\"float\"},{\"name\":\"doubleData\",\"type\":\"double\"},{\"name\":\"booleanData\",\"type\":\"boolean\",\"default\":true}]}}},{\"name\":\"stringList\",\"type\":{\"type\":\"array\",\"items\":\"string\"}},{\"name\":\"pandoraEnum\",\"type\":{\"type\":\"enum\",\"name\":\"PandoraEnum\",\"symbols\":[\"FIRST\",\"SECOND\",\"THIRD\"]}}]}");
-  @Deprecated public java.util.List<pandora.avro.PandoraRecord> recordList;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"PandoraList\",\"namespace\":\"pandora.domain.avro\",\"fields\":[{\"name\":\"recordList\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"PandoraRecord\",\"fields\":[{\"name\":\"stringData\",\"type\":\"string\",\"default\":null},{\"name\":\"byteData\",\"type\":\"bytes\"},{\"name\":\"intData\",\"type\":\"int\"},{\"name\":\"longData\",\"type\":\"long\"},{\"name\":\"floatData\",\"type\":\"float\"},{\"name\":\"doubleData\",\"type\":\"double\"},{\"name\":\"booleanData\",\"type\":\"boolean\",\"default\":true}]}}},{\"name\":\"stringList\",\"type\":{\"type\":\"array\",\"items\":\"string\"}},{\"name\":\"pandoraEnum\",\"type\":{\"type\":\"enum\",\"name\":\"PandoraEnum\",\"symbols\":[\"FIRST\",\"SECOND\",\"THIRD\"]}}]}");
+  @Deprecated public java.util.List<pandora.domain.avro.PandoraRecord> recordList;
   @Deprecated public java.util.List<java.lang.CharSequence> stringList;
-  @Deprecated public pandora.avro.PandoraEnum pandoraEnum;
+  @Deprecated public pandora.domain.avro.PandoraEnum pandoraEnum;
   public org.apache.avro.Schema getSchema() { return SCHEMA$; }
   // Used by DatumWriter.  Applications should not call. 
   public java.lang.Object get(int field$) {
@@ -24,9 +24,9 @@ public class PandoraList extends org.apache.avro.specific.SpecificRecordBase imp
   @SuppressWarnings(value="unchecked")
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
-    case 0: recordList = (java.util.List<pandora.avro.PandoraRecord>)value$; break;
+    case 0: recordList = (java.util.List<pandora.domain.avro.PandoraRecord>)value$; break;
     case 1: stringList = (java.util.List<java.lang.CharSequence>)value$; break;
-    case 2: pandoraEnum = (pandora.avro.PandoraEnum)value$; break;
+    case 2: pandoraEnum = (pandora.domain.avro.PandoraEnum)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -34,7 +34,7 @@ public class PandoraList extends org.apache.avro.specific.SpecificRecordBase imp
   /**
    * Gets the value of the 'recordList' field.
    */
-  public java.util.List<pandora.avro.PandoraRecord> getRecordList() {
+  public java.util.List<pandora.domain.avro.PandoraRecord> getRecordList() {
     return recordList;
   }
 
@@ -42,7 +42,7 @@ public class PandoraList extends org.apache.avro.specific.SpecificRecordBase imp
    * Sets the value of the 'recordList' field.
    * @param value the value to set.
    */
-  public void setRecordList(java.util.List<pandora.avro.PandoraRecord> value) {
+  public void setRecordList(java.util.List<pandora.domain.avro.PandoraRecord> value) {
     this.recordList = value;
   }
 
@@ -64,7 +64,7 @@ public class PandoraList extends org.apache.avro.specific.SpecificRecordBase imp
   /**
    * Gets the value of the 'pandoraEnum' field.
    */
-  public pandora.avro.PandoraEnum getPandoraEnum() {
+  public pandora.domain.avro.PandoraEnum getPandoraEnum() {
     return pandoraEnum;
   }
 
@@ -72,23 +72,23 @@ public class PandoraList extends org.apache.avro.specific.SpecificRecordBase imp
    * Sets the value of the 'pandoraEnum' field.
    * @param value the value to set.
    */
-  public void setPandoraEnum(pandora.avro.PandoraEnum value) {
+  public void setPandoraEnum(pandora.domain.avro.PandoraEnum value) {
     this.pandoraEnum = value;
   }
 
   /** Creates a new PandoraList RecordBuilder */
-  public static pandora.avro.PandoraList.Builder newBuilder() {
-    return new pandora.avro.PandoraList.Builder();
+  public static pandora.domain.avro.PandoraList.Builder newBuilder() {
+    return new pandora.domain.avro.PandoraList.Builder();
   }
   
   /** Creates a new PandoraList RecordBuilder by copying an existing Builder */
-  public static pandora.avro.PandoraList.Builder newBuilder(pandora.avro.PandoraList.Builder other) {
-    return new pandora.avro.PandoraList.Builder(other);
+  public static pandora.domain.avro.PandoraList.Builder newBuilder(pandora.domain.avro.PandoraList.Builder other) {
+    return new pandora.domain.avro.PandoraList.Builder(other);
   }
   
   /** Creates a new PandoraList RecordBuilder by copying an existing PandoraList instance */
-  public static pandora.avro.PandoraList.Builder newBuilder(pandora.avro.PandoraList other) {
-    return new pandora.avro.PandoraList.Builder(other);
+  public static pandora.domain.avro.PandoraList.Builder newBuilder(pandora.domain.avro.PandoraList other) {
+    return new pandora.domain.avro.PandoraList.Builder(other);
   }
   
   /**
@@ -97,25 +97,25 @@ public class PandoraList extends org.apache.avro.specific.SpecificRecordBase imp
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<PandoraList>
     implements org.apache.avro.data.RecordBuilder<PandoraList> {
 
-    private java.util.List<pandora.avro.PandoraRecord> recordList;
+    private java.util.List<pandora.domain.avro.PandoraRecord> recordList;
     private java.util.List<java.lang.CharSequence> stringList;
-    private pandora.avro.PandoraEnum pandoraEnum;
+    private pandora.domain.avro.PandoraEnum pandoraEnum;
 
     /** Creates a new Builder */
     private Builder() {
-      super(pandora.avro.PandoraList.SCHEMA$);
+      super(pandora.domain.avro.PandoraList.SCHEMA$);
     }
     
     /** Creates a Builder by copying an existing Builder */
-    private Builder(pandora.avro.PandoraList.Builder other) {
+    private Builder(pandora.domain.avro.PandoraList.Builder other) {
       super(other);
     }
     
     /** Creates a Builder by copying an existing PandoraList instance */
-    private Builder(pandora.avro.PandoraList other) {
-            super(pandora.avro.PandoraList.SCHEMA$);
+    private Builder(pandora.domain.avro.PandoraList other) {
+            super(pandora.domain.avro.PandoraList.SCHEMA$);
       if (isValidValue(fields()[0], other.recordList)) {
-        this.recordList = (java.util.List<pandora.avro.PandoraRecord>) data().deepCopy(fields()[0].schema(), other.recordList);
+        this.recordList = (java.util.List<pandora.domain.avro.PandoraRecord>) data().deepCopy(fields()[0].schema(), other.recordList);
         fieldSetFlags()[0] = true;
       }
       if (isValidValue(fields()[1], other.stringList)) {
@@ -123,18 +123,18 @@ public class PandoraList extends org.apache.avro.specific.SpecificRecordBase imp
         fieldSetFlags()[1] = true;
       }
       if (isValidValue(fields()[2], other.pandoraEnum)) {
-        this.pandoraEnum = (pandora.avro.PandoraEnum) data().deepCopy(fields()[2].schema(), other.pandoraEnum);
+        this.pandoraEnum = (pandora.domain.avro.PandoraEnum) data().deepCopy(fields()[2].schema(), other.pandoraEnum);
         fieldSetFlags()[2] = true;
       }
     }
 
     /** Gets the value of the 'recordList' field */
-    public java.util.List<pandora.avro.PandoraRecord> getRecordList() {
+    public java.util.List<pandora.domain.avro.PandoraRecord> getRecordList() {
       return recordList;
     }
     
     /** Sets the value of the 'recordList' field */
-    public pandora.avro.PandoraList.Builder setRecordList(java.util.List<pandora.avro.PandoraRecord> value) {
+    public pandora.domain.avro.PandoraList.Builder setRecordList(java.util.List<pandora.domain.avro.PandoraRecord> value) {
       validate(fields()[0], value);
       this.recordList = value;
       fieldSetFlags()[0] = true;
@@ -147,7 +147,7 @@ public class PandoraList extends org.apache.avro.specific.SpecificRecordBase imp
     }
     
     /** Clears the value of the 'recordList' field */
-    public pandora.avro.PandoraList.Builder clearRecordList() {
+    public pandora.domain.avro.PandoraList.Builder clearRecordList() {
       recordList = null;
       fieldSetFlags()[0] = false;
       return this;
@@ -159,7 +159,7 @@ public class PandoraList extends org.apache.avro.specific.SpecificRecordBase imp
     }
     
     /** Sets the value of the 'stringList' field */
-    public pandora.avro.PandoraList.Builder setStringList(java.util.List<java.lang.CharSequence> value) {
+    public pandora.domain.avro.PandoraList.Builder setStringList(java.util.List<java.lang.CharSequence> value) {
       validate(fields()[1], value);
       this.stringList = value;
       fieldSetFlags()[1] = true;
@@ -172,19 +172,19 @@ public class PandoraList extends org.apache.avro.specific.SpecificRecordBase imp
     }
     
     /** Clears the value of the 'stringList' field */
-    public pandora.avro.PandoraList.Builder clearStringList() {
+    public pandora.domain.avro.PandoraList.Builder clearStringList() {
       stringList = null;
       fieldSetFlags()[1] = false;
       return this;
     }
 
     /** Gets the value of the 'pandoraEnum' field */
-    public pandora.avro.PandoraEnum getPandoraEnum() {
+    public pandora.domain.avro.PandoraEnum getPandoraEnum() {
       return pandoraEnum;
     }
     
     /** Sets the value of the 'pandoraEnum' field */
-    public pandora.avro.PandoraList.Builder setPandoraEnum(pandora.avro.PandoraEnum value) {
+    public pandora.domain.avro.PandoraList.Builder setPandoraEnum(pandora.domain.avro.PandoraEnum value) {
       validate(fields()[2], value);
       this.pandoraEnum = value;
       fieldSetFlags()[2] = true;
@@ -197,7 +197,7 @@ public class PandoraList extends org.apache.avro.specific.SpecificRecordBase imp
     }
     
     /** Clears the value of the 'pandoraEnum' field */
-    public pandora.avro.PandoraList.Builder clearPandoraEnum() {
+    public pandora.domain.avro.PandoraList.Builder clearPandoraEnum() {
       pandoraEnum = null;
       fieldSetFlags()[2] = false;
       return this;
@@ -207,9 +207,9 @@ public class PandoraList extends org.apache.avro.specific.SpecificRecordBase imp
     public PandoraList build() {
       try {
         PandoraList record = new PandoraList();
-        record.recordList = fieldSetFlags()[0] ? this.recordList : (java.util.List<pandora.avro.PandoraRecord>) defaultValue(fields()[0]);
+        record.recordList = fieldSetFlags()[0] ? this.recordList : (java.util.List<pandora.domain.avro.PandoraRecord>) defaultValue(fields()[0]);
         record.stringList = fieldSetFlags()[1] ? this.stringList : (java.util.List<java.lang.CharSequence>) defaultValue(fields()[1]);
-        record.pandoraEnum = fieldSetFlags()[2] ? this.pandoraEnum : (pandora.avro.PandoraEnum) defaultValue(fields()[2]);
+        record.pandoraEnum = fieldSetFlags()[2] ? this.pandoraEnum : (pandora.domain.avro.PandoraEnum) defaultValue(fields()[2]);
         return record;
       } catch (Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);

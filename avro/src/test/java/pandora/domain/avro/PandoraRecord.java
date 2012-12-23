@@ -3,12 +3,10 @@
  * 
  * DO NOT EDIT DIRECTLY
  */
-package pandora.avro;  
-
-
+package pandora.domain.avro;  
 @SuppressWarnings("all")
 public class PandoraRecord extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"PandoraRecord\",\"namespace\":\"pandora.avro\",\"fields\":[{\"name\":\"stringData\",\"type\":\"string\",\"default\":null},{\"name\":\"byteData\",\"type\":\"bytes\"},{\"name\":\"intData\",\"type\":\"int\"},{\"name\":\"longData\",\"type\":\"long\"},{\"name\":\"floatData\",\"type\":\"float\"},{\"name\":\"doubleData\",\"type\":\"double\"},{\"name\":\"booleanData\",\"type\":\"boolean\",\"default\":true}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"PandoraRecord\",\"namespace\":\"pandora.domain.avro\",\"fields\":[{\"name\":\"stringData\",\"type\":\"string\",\"default\":null},{\"name\":\"byteData\",\"type\":\"bytes\"},{\"name\":\"intData\",\"type\":\"int\"},{\"name\":\"longData\",\"type\":\"long\"},{\"name\":\"floatData\",\"type\":\"float\"},{\"name\":\"doubleData\",\"type\":\"double\"},{\"name\":\"booleanData\",\"type\":\"boolean\",\"default\":true}]}");
   @Deprecated public java.lang.CharSequence stringData;
   @Deprecated public java.nio.ByteBuffer byteData;
   @Deprecated public int intData;
@@ -151,18 +149,18 @@ public class PandoraRecord extends org.apache.avro.specific.SpecificRecordBase i
   }
 
   /** Creates a new PandoraRecord RecordBuilder */
-  public static pandora.avro.PandoraRecord.Builder newBuilder() {
-    return new pandora.avro.PandoraRecord.Builder();
+  public static pandora.domain.avro.PandoraRecord.Builder newBuilder() {
+    return new pandora.domain.avro.PandoraRecord.Builder();
   }
   
   /** Creates a new PandoraRecord RecordBuilder by copying an existing Builder */
-  public static pandora.avro.PandoraRecord.Builder newBuilder(pandora.avro.PandoraRecord.Builder other) {
-    return new pandora.avro.PandoraRecord.Builder(other);
+  public static pandora.domain.avro.PandoraRecord.Builder newBuilder(pandora.domain.avro.PandoraRecord.Builder other) {
+    return new pandora.domain.avro.PandoraRecord.Builder(other);
   }
   
   /** Creates a new PandoraRecord RecordBuilder by copying an existing PandoraRecord instance */
-  public static pandora.avro.PandoraRecord.Builder newBuilder(pandora.avro.PandoraRecord other) {
-    return new pandora.avro.PandoraRecord.Builder(other);
+  public static pandora.domain.avro.PandoraRecord.Builder newBuilder(pandora.domain.avro.PandoraRecord other) {
+    return new pandora.domain.avro.PandoraRecord.Builder(other);
   }
   
   /**
@@ -181,17 +179,17 @@ public class PandoraRecord extends org.apache.avro.specific.SpecificRecordBase i
 
     /** Creates a new Builder */
     private Builder() {
-      super(pandora.avro.PandoraRecord.SCHEMA$);
+      super(pandora.domain.avro.PandoraRecord.SCHEMA$);
     }
     
     /** Creates a Builder by copying an existing Builder */
-    private Builder(pandora.avro.PandoraRecord.Builder other) {
+    private Builder(pandora.domain.avro.PandoraRecord.Builder other) {
       super(other);
     }
     
     /** Creates a Builder by copying an existing PandoraRecord instance */
-    private Builder(pandora.avro.PandoraRecord other) {
-            super(pandora.avro.PandoraRecord.SCHEMA$);
+    private Builder(pandora.domain.avro.PandoraRecord other) {
+            super(pandora.domain.avro.PandoraRecord.SCHEMA$);
       if (isValidValue(fields()[0], other.stringData)) {
         this.stringData = (java.lang.CharSequence) data().deepCopy(fields()[0].schema(), other.stringData);
         fieldSetFlags()[0] = true;
@@ -228,7 +226,7 @@ public class PandoraRecord extends org.apache.avro.specific.SpecificRecordBase i
     }
     
     /** Sets the value of the 'stringData' field */
-    public pandora.avro.PandoraRecord.Builder setStringData(java.lang.CharSequence value) {
+    public pandora.domain.avro.PandoraRecord.Builder setStringData(java.lang.CharSequence value) {
       validate(fields()[0], value);
       this.stringData = value;
       fieldSetFlags()[0] = true;
@@ -241,7 +239,7 @@ public class PandoraRecord extends org.apache.avro.specific.SpecificRecordBase i
     }
     
     /** Clears the value of the 'stringData' field */
-    public pandora.avro.PandoraRecord.Builder clearStringData() {
+    public pandora.domain.avro.PandoraRecord.Builder clearStringData() {
       stringData = null;
       fieldSetFlags()[0] = false;
       return this;
@@ -253,7 +251,7 @@ public class PandoraRecord extends org.apache.avro.specific.SpecificRecordBase i
     }
     
     /** Sets the value of the 'byteData' field */
-    public pandora.avro.PandoraRecord.Builder setByteData(java.nio.ByteBuffer value) {
+    public pandora.domain.avro.PandoraRecord.Builder setByteData(java.nio.ByteBuffer value) {
       validate(fields()[1], value);
       this.byteData = value;
       fieldSetFlags()[1] = true;
@@ -266,7 +264,7 @@ public class PandoraRecord extends org.apache.avro.specific.SpecificRecordBase i
     }
     
     /** Clears the value of the 'byteData' field */
-    public pandora.avro.PandoraRecord.Builder clearByteData() {
+    public pandora.domain.avro.PandoraRecord.Builder clearByteData() {
       byteData = null;
       fieldSetFlags()[1] = false;
       return this;
@@ -278,7 +276,7 @@ public class PandoraRecord extends org.apache.avro.specific.SpecificRecordBase i
     }
     
     /** Sets the value of the 'intData' field */
-    public pandora.avro.PandoraRecord.Builder setIntData(int value) {
+    public pandora.domain.avro.PandoraRecord.Builder setIntData(int value) {
       validate(fields()[2], value);
       this.intData = value;
       fieldSetFlags()[2] = true;
@@ -291,7 +289,7 @@ public class PandoraRecord extends org.apache.avro.specific.SpecificRecordBase i
     }
     
     /** Clears the value of the 'intData' field */
-    public pandora.avro.PandoraRecord.Builder clearIntData() {
+    public pandora.domain.avro.PandoraRecord.Builder clearIntData() {
       fieldSetFlags()[2] = false;
       return this;
     }
@@ -302,7 +300,7 @@ public class PandoraRecord extends org.apache.avro.specific.SpecificRecordBase i
     }
     
     /** Sets the value of the 'longData' field */
-    public pandora.avro.PandoraRecord.Builder setLongData(long value) {
+    public pandora.domain.avro.PandoraRecord.Builder setLongData(long value) {
       validate(fields()[3], value);
       this.longData = value;
       fieldSetFlags()[3] = true;
@@ -315,7 +313,7 @@ public class PandoraRecord extends org.apache.avro.specific.SpecificRecordBase i
     }
     
     /** Clears the value of the 'longData' field */
-    public pandora.avro.PandoraRecord.Builder clearLongData() {
+    public pandora.domain.avro.PandoraRecord.Builder clearLongData() {
       fieldSetFlags()[3] = false;
       return this;
     }
@@ -326,7 +324,7 @@ public class PandoraRecord extends org.apache.avro.specific.SpecificRecordBase i
     }
     
     /** Sets the value of the 'floatData' field */
-    public pandora.avro.PandoraRecord.Builder setFloatData(float value) {
+    public pandora.domain.avro.PandoraRecord.Builder setFloatData(float value) {
       validate(fields()[4], value);
       this.floatData = value;
       fieldSetFlags()[4] = true;
@@ -339,7 +337,7 @@ public class PandoraRecord extends org.apache.avro.specific.SpecificRecordBase i
     }
     
     /** Clears the value of the 'floatData' field */
-    public pandora.avro.PandoraRecord.Builder clearFloatData() {
+    public pandora.domain.avro.PandoraRecord.Builder clearFloatData() {
       fieldSetFlags()[4] = false;
       return this;
     }
@@ -350,7 +348,7 @@ public class PandoraRecord extends org.apache.avro.specific.SpecificRecordBase i
     }
     
     /** Sets the value of the 'doubleData' field */
-    public pandora.avro.PandoraRecord.Builder setDoubleData(double value) {
+    public pandora.domain.avro.PandoraRecord.Builder setDoubleData(double value) {
       validate(fields()[5], value);
       this.doubleData = value;
       fieldSetFlags()[5] = true;
@@ -363,7 +361,7 @@ public class PandoraRecord extends org.apache.avro.specific.SpecificRecordBase i
     }
     
     /** Clears the value of the 'doubleData' field */
-    public pandora.avro.PandoraRecord.Builder clearDoubleData() {
+    public pandora.domain.avro.PandoraRecord.Builder clearDoubleData() {
       fieldSetFlags()[5] = false;
       return this;
     }
@@ -374,7 +372,7 @@ public class PandoraRecord extends org.apache.avro.specific.SpecificRecordBase i
     }
     
     /** Sets the value of the 'booleanData' field */
-    public pandora.avro.PandoraRecord.Builder setBooleanData(boolean value) {
+    public pandora.domain.avro.PandoraRecord.Builder setBooleanData(boolean value) {
       validate(fields()[6], value);
       this.booleanData = value;
       fieldSetFlags()[6] = true;
@@ -387,7 +385,7 @@ public class PandoraRecord extends org.apache.avro.specific.SpecificRecordBase i
     }
     
     /** Clears the value of the 'booleanData' field */
-    public pandora.avro.PandoraRecord.Builder clearBooleanData() {
+    public pandora.domain.avro.PandoraRecord.Builder clearBooleanData() {
       fieldSetFlags()[6] = false;
       return this;
     }

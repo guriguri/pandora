@@ -1,4 +1,4 @@
-@namespace("pandora.avro")
+@namespace("pandora.domain.avro")
 protocol PandoraProtocol {
 	record PandoraRecord {
 		string stringData = null;
