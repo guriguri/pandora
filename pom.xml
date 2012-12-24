@@ -5,19 +5,19 @@
 	<groupId>pandora</groupId>
 	<artifactId>pandora</artifactId>
 	<version>parent</version>
-  
+
 	<packaging>pom</packaging>
 
 	<modules>
 		<module>util</module>
 		<module>common-domain</module>
-		<module>vertx</module>
 		<module>avro</module>
+		<module>kryo2</module>
 		<module>redis</module>
 		<module>disruptor</module>
+		<module>vertx</module>
 		<module>hbase</module>
 		<module>kafka</module>
-		<module>kryo2</module>
 		<module>mysql</module>
 		<module>storm</module>
 	</modules>
@@ -123,12 +123,24 @@
 					<version>2.6</version>
 					<configuration>
 						<testFailureIgnore>true</testFailureIgnore>
-						<junitArtifactName>org.junit:com.springsource.org.junit
-						</junitArtifactName>
+						<includes>
+							<include>**/*Test.java</include>
+						</includes>
 					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+			<resource>
+				<directory>src/test/resources</directory>
+				<targetPath>${basedir}/target/test-classes</targetPath>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

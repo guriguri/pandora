@@ -22,7 +22,7 @@ import org.vertx.java.core.net.NetSocket;
 
 import pandora.util.SocketUtil;
 
-public class VertxTcpClientTest {
+public class VertxTcpClientTestSkip {
 	private static final int PACKET_SIZE = 100;
 	private static final int MAX_SEND_COUNT = 100000;
 	private static final long THREAD_SLEEP_MSEC = 1000L;
@@ -54,8 +54,8 @@ public class VertxTcpClientTest {
 		VertxTcpClient client = new VertxTcpClient();
 		VertxClientEventHandler handler = new VertxClientEventHandler();
 
-		client.setDomain(VertxTcpServerTest.DOMAIN);
-		client.setPort(VertxTcpServerTest.PORT);
+		client.setDomain(VertxTcpServerTestSkip.DOMAIN);
+		client.setPort(VertxTcpServerTestSkip.PORT);
 		client.setHandler(handler);
 
 		client.start();
@@ -81,8 +81,8 @@ public class VertxTcpClientTest {
 				"0");
 		for (int i = 0; i < MAX_SEND_COUNT; i++) {
 			try {
-				SocketUtil.getSocketToString(VertxTcpServerTest.DOMAIN,
-						VertxTcpServerTest.PORT, packet, 100);
+				SocketUtil.getSocketToString(VertxTcpServerTestSkip.DOMAIN,
+						VertxTcpServerTestSkip.PORT, packet, 100);
 			} catch (Exception e) {
 				e.printStackTrace();
 				errorCnt++;
