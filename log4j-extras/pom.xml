@@ -1,0 +1,28 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>pandora</groupId>
+		<artifactId>pandora</artifactId>
+		<version>parent</version>
+	</parent>
+	<artifactId>pandora-log4j-extra</artifactId>
+
+	<packaging>jar</packaging>
+
+	<properties>
+		<log4j.extras.version>1.1</log4j.extras.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>apache-log4j-extras</artifactId>
+			<version>${log4j.extras.version}</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+	</build>
+</project>
