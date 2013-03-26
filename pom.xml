@@ -21,6 +21,7 @@
 		<module>mysql</module>
 		<module>storm</module>
 		<module>log4j-extras</module>
+		<module>web</module>
 	</modules>
 
 	<properties>

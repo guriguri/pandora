@@ -1,0 +1,64 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>pandora</groupId>
+		<artifactId>pandora</artifactId>
+		<version>parent</version>
+	</parent>
+	<artifactId>pandora-web</artifactId>
+
+	<packaging>war</packaging>
+
+	<properties>
+		<maven.test.skip>true</maven.test.skip>
+		<servlet.version>2.5</servlet.version>
+		<maven-eclipse-plugin.version>2.9</maven-eclipse-plugin.version>
+		<maven-assembly-plugin.phase>naver</maven-assembly-plugin.phase>
+	</properties>
+
+	<dependencies>
+		<!-- web -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>${servlet.version}</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<version>${maven-eclipse-plugin.version}</version>
+				<configuration>
+					<additionalProjectnatures>
+						<projectnature>org.springframework.ide.eclipse.core.springnature</projectnature>
+					</additionalProjectnatures>
+					<additionalBuildcommands>
+						<buildcommand>org.springframework.ide.eclipse.core.springbuilder</buildcommand>
+					</additionalBuildcommands>
+					<downloadSources>true</downloadSources>
+					<downloadJavadocs>true</downloadJavadocs>
+				</configuration>
+			</plugin>
+			<!-- <plugin> <artifactId>maven-antrun-plugin</artifactId> <executions> 
+				<execution> <id>prepare-package</id> <phase>prepare-package</phase> <goals> 
+				<goal>run</goal> </goals> <configuration> <tasks> <echo message="copy src/main/resources/pandora.properties 
+				target/classes/pandora.properties" /> <copy file="src/main/resources/pandora.properties" 
+				tofile="target/classes/pandora.properties" /> </tasks> </configuration> </execution> 
+				<execution> <id>install</id> <phase>install</phase> <goals> <goal>run</goal> 
+				</goals> <configuration> <tasks> <echo message="copy target/${project.build.finalName}.war 
+				${build.outputDirectory}/${project.build.finalName}.war" /> <copy file="target/${project.build.finalName}.war" 
+				tofile="${build.outputDirectory}/${project.build.finalName}.war" /> </tasks> 
+				</configuration> </execution> </executions> </plugin> -->
+		</plugins>
+	</build>
+</project>
